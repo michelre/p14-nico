@@ -4,13 +4,26 @@ import { Link } from "react-router";
 import DatePicker from "react-datepicker";
 import { fr } from 'date-fns/locale/fr';
 import "react-datepicker/dist/react-datepicker.css";
-import Select from "../components/select/Select";
+import Select from 'select-nico/dist/select-nico.js'
 
 import EmployeesContext from "../context";
+import Modal from "../components/modal/Modal";
+import { createPortal } from "react-dom";
+
+const states = [
+    {label: 'Alabama', value: 'AL'},
+    {label: 'Colorado', value: 'COL'},
+]
+
+const departments = [
+    {label: 'Sales', value: 'Sales'},
+    {label: 'Marketing', value: 'Marketing'},
+]
 
 
 const Home = () => {
     const {employees, setEmployees} = useContext(EmployeesContext)
+    const [showModal, setShowModal] = useState(false)
     const [form, setForm] = useState({
         'firstName': '',
         'lastName': '',
@@ -18,9 +31,9 @@ const Home = () => {
         'startDate': new Date(),
         'street': '',
         'city': '',
-        'state': 'AL',
+        'state': null,
         'zipCode': '',
-        'department': 'Sales'
+        'department': null,
     })
 
     const updateForm = (field, value) => {
@@ -30,6 +43,7 @@ const Home = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setEmployees(employees.concat(form))
+        setShowModal(true)
     }
 
 
@@ -69,7 +83,7 @@ const Home = () => {
                 />
             </div>
 
-            <fieldset>
+            <fieldset className="address">
                 <legend>Address</legend>
                 <div>
                     <label htmlFor="street">Street</label>
@@ -84,12 +98,9 @@ const Home = () => {
                 <div>
                     <label htmlFor="state">State</label>
                     <Select 
-                        options={[
-                            {label: 'Alabama', value: 'AL'},
-                            {label: 'Colorado', value: 'COL'},
-                        ]}
+                        options={states}
                         onChange={(value) => updateForm('state', value)}
-                    
+                        selected={form.state || states[0]}                    
                     />
                 </div>
 
@@ -103,14 +114,11 @@ const Home = () => {
 
             <div>
                     <label htmlFor="department">Department</label>
-                    <Select 
-                        options={[
-                            {label: 'Sales', value: 'Sales'},
-                            {label: 'Marketing', value: 'Marketing'},
-                        ]}
+                    {<Select 
+                        options={departments}
                         onChange={(value) => updateForm('department', value)}
-                    
-                    />
+                        selected={form.department || departments[0]}
+                    />}
                 </div>
 
 
@@ -119,6 +127,10 @@ const Home = () => {
             <button type="submit" onClick={handleSubmit}>Save</button>
 
         </form>
+        {(showModal) ?  createPortal(<Modal onClose={() => setShowModal(!showModal)}>
+            Employee created!
+        </Modal>, document.body)  : ''}
+        
     </div>
 }
 

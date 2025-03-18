@@ -4,5 +4,24 @@ label, input {
 
 .form {
   margin: auto;
-  width: 80%;
+  width: 300px;
+}
+
+.form h1, .form a, .form h2 {
+  text-align: center;
+  display: block;
+}
+
+label {
+  display: block;
+  margin: 16px 0 10px 0;
+}
+
+.address {
+  margin-top: 10px;
+}
+
+.form button {
+  display: block;
+  margin: 16px auto;
 }
