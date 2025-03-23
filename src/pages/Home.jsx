@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import DatePicker from "react-datepicker";
 import { fr } from 'date-fns/locale/fr';
 import "react-datepicker/dist/react-datepicker.css";
-import Select from 'select-nico/dist/select-nico.js'
+import Select from 'select-nico'
 
 import EmployeesContext from "../context";
 import Modal from "../components/modal/Modal";
@@ -31,9 +31,9 @@ const Home = () => {
         'startDate': new Date(),
         'street': '',
         'city': '',
-        'state': null,
+        'state': states[0],
         'zipCode': '',
-        'department': null,
+        'department': departments[0],
     })
 
     const updateForm = (field, value) => {
@@ -42,7 +42,14 @@ const Home = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setEmployees(employees.concat(form))
+        const savedForm = {
+            ...form,
+            state: form.state ? form.state.value : '',
+            department: form.department ? form.department.value : ''
+        }
+        const newEmployees = employees.concat(savedForm)
+        setEmployees(newEmployees)
+        localStorage.setItem('employees', JSON.stringify(newEmployees))
         setShowModal(true)
     }
 

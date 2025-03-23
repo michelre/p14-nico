@@ -1,3 +1,8 @@
+.container {
+  max-width: 1180px;
+  margin: auto;
+}
+
 label, input {
   display: block;
 }
@@ -5,6 +10,10 @@ label, input {
 .form {
   margin: auto;
   width: 300px;
+}
+
+h1 {
+  text-align: center;
 }
 
 .form h1, .form a, .form h2 {
@@ -24,4 +33,9 @@ label {
 .form button {
   display: block;
   margin: 16px auto;
+}
+
+.text-center {
+  text-align: center;
+  display: block;
 }

@@ -6,7 +6,8 @@ import EmployeesContext from "./context";
 import { useState } from "react";
 
 const App = () => {
-    const [employees, setEmployees] = useState([]);
+    const defaultEmployees = localStorage.getItem('employees') || '[]'
+    const [employees, setEmployees] = useState(JSON.parse(defaultEmployees));
 
     return <EmployeesContext.Provider value={{employees, setEmployees}}>
         <BrowserRouter>

@@ -1,0 +1,122 @@
+.containerFilter{
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .containerSelect{
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+  .containerSearch{
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  tbody td {
+    border-spacing: 0;
+  }
+  
+  table {
+    border-spacing: 0;
+    width:100%;
+  }
+  
+  table tr {
+    border: 0;
+  }
+  
+  table thead th{
+  background-color:#ddd ;
+  padding: 10px;
+  }
+  
+  table tr td {
+    border-left: 0;
+    padding: 10px;
+  }
+  table tr:nth-child(odd){
+  background-color:#f8f4f4;
+  }
+  
+  
+  table tr:hover {
+    background:rgb(202, 204, 202) ;
+  }
+  
+  .containerGoTo{
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+  .sortable {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .th-content {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .sort-icons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+  }
+  
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    opacity: 0.5; 
+  }
+  
+  .triangle.up {
+    border-bottom: 6px solid gray;
+    margin-bottom: 2px;
+  }
+  
+  .triangle.down {
+    border-top: 6px solid gray;
+    margin-top: 2px;
+  }
+  
+  .triangle.active {
+    opacity: 1;
+    border-bottom-color: black;
+    border-top-color: black;
+  }
+  .flex {
+    display: flex;
+  }
+  
+  .justify-between {
+    justify-content: space-between;
+  }
+  
+  .py-4 {
+    padding: 16px 0;
+  }
+  .pagination-btn{
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 14px;
+  }
+  #pagination-number{
+    background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);
+    color: #333 !important;
+      border: 1px solid #979797;
+      padding: 8px 12px;
+  }
+  .select-show{
+    margin: 0 10px;
+  }
